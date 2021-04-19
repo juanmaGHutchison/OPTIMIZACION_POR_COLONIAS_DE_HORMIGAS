@@ -53,7 +53,7 @@ _Ayudas ofrecidas_
 
 * **Arturo Morgado Estévez** - *Estructuración del proyecto y electrónica*
 * **Abel García Otero** - *Electrónica*
-* **Ignacio Díaz Cano** - *Documentación y codificación* 
+* **Ignacio Díaz Cano** - *Documentación y codificación* - [ignaciodc] (https://github.com/ignaciodc)
 * **Villanuevad** - *Plantilla de documento README.md* - [villanuevand](https://github.com/villanuevand)
 
 
