@@ -16,7 +16,7 @@ Path::Path(const Path& p) :
     n_ (p.n_)
     {
         path_ = new uint8_t[n_];
-        for(int i = 0; i < n_; i++)
+        for(int i = 0; i < path_length_; i++)
             path_[i] = p.path_[i];
     }
 Path Path::operator = (Path p) {
@@ -45,7 +45,7 @@ void Path::clear_path() {
 uint8_t Path::remove_last() {
   uint8_t element_to_return = path_[path_length_ - 1];
 
-  path_[path_length_ - 1] = -1;
+  path_[(path_length_ - 1)] = -1;
   --path_length_;
 
   return element_to_return;

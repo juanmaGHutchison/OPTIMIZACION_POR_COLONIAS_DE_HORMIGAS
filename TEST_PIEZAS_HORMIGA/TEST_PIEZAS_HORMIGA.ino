@@ -2,10 +2,13 @@
 #define TEST_HORMIGAS_INO_
 #include "PINS.hpp"
 #include "MOTOR.hpp"
+#include "MOTOR_PWM.hpp"
 #include "2xCNY.hpp"
 #include "CNY.hpp"
 #include <SoftwareSerial.h>
 /**ONLY FOR DEBUG**/
+
+//#define PWM_
 //#define SERIAL_BLUETOOTH_ONLY_ 
 //uncomment this line if you are using bluetooth to comunicate the ant with the PC
 #define SERIAL_WIRED_ONLY_       
@@ -16,7 +19,7 @@
 //uncomment if you want the robot to run
 //#define RUN_WHITE_PATH_ROBOT_     
 //uncomment if you want the robot to run through a white path
-//#define PRINT_CNY_READ_          
+#define PRINT_CNY_READ_          
 //uncomment if you want to display the cny analog read
 //#define PROBAR_COLORES_        
 //uncomment if you want to activate and display wich colour is the sensor colour reading
@@ -28,7 +31,7 @@
 //uncomment this line to calibrate the robots turnning around
 //#define FOLLOW_BLACK_LINES_       
 //uncomment this line to follow black lines
-#define GRADES_                     
+//#define GRADES_                     
 //uncomment this line to calibrate de grades of the robot
 //SOME INIZIALITATIONS
 #ifdef SERIAL_BLUETOOTH_ONLY_
@@ -36,6 +39,7 @@ SoftwareSerial bluetoothSerial(BLUETOOTH_RECEIVE, BLUETOOTH_TRANSMIT);
 #endif
 String cadena_iteracion;
 MOTOR motor;
+MOTOR_PWM motor_pwm(150); //PWM_RIGHT MOTOR, PWM_LEFT MOTOR
 CNY cny_left(CNY_LEFT, 800), cny_right(CNY_RIGHT, 800);
 x2CNY cnys(cny_left, cny_right);
 byte countRed = 0;
@@ -64,22 +68,52 @@ void setup() {
 }
 //PROBAR CROSS RIGHT AND LEFT
 void loop() {
+  #ifdef PWM_
+  motor_pwm.backRight();
+  delay(880);
+  motor_pwm.backLeft();
+  delay (880);
+    /*#define LN298_IN1 5
+#define LN298_IN2 4
+#define LN298_IN3 3
+#define LN298_IN4 2
+  analogWrite(LN298_IN1, 890);
+  analogWrite(LN298_IN2, 0);
+  analogWrite(LN298_IN3, 890);
+  analogWrite(LN298_IN4, 0);*/
+  /*
+  for(size_t i = 0; i < 1024; i++) {
+    analogWrite(LN298_IN1, i);
+    Serial.println(i);
+  }
+
+  for(size_t j = 1024; j > 0; j--) {
+    analogWrite(LN298_IN1, j);
+    Serial.println(j);
+  }*/
+  
+  #endif
   #ifdef STRAIGHT_FOWARD_
     motor.straight();
-    delay(1000);
-    motor.back();
-    delay(1000);
+    //delay(1000);
+    /*motor.back();
+    delay(1000);*/
   #endif
   #ifdef PROBAR_COLORES_
   Serial.println("prueba colores");
-  for(int i = 0; i < 50; ++i){
-          digitalWrite(S2, LOW);
-          digitalWrite(S3, LOW);
-          countRed = pulseIn(OUT, digitalRead(OUT) == HIGH ? LOW : HIGH);
-          digitalWrite(S3, HIGH);
-          countBlue = pulseIn(OUT, digitalRead(OUT) == HIGH ? LOW : HIGH);
-          digitalWrite(S2, HIGH);
-          countGreen = pulseIn(OUT, digitalRead(OUT) == HIGH ? LOW : HIGH);       
+  
+          countRed = 0;
+          countBlue = 0;
+          countGreen = 0;
+          for(int i = 0; i < 7; ++i){
+            digitalWrite(S2, LOW);
+            digitalWrite(S3, LOW);
+            countRed += pulseIn(OUT, digitalRead(OUT) == HIGH ? LOW : HIGH);
+            digitalWrite(S3, HIGH);
+            countBlue += pulseIn(OUT, digitalRead(OUT) == HIGH ? LOW : HIGH);
+            digitalWrite(S2, HIGH);
+            countGreen += pulseIn(OUT, digitalRead(OUT) == HIGH ? LOW : HIGH);  
+          }     
           cadena_iteracion = "Contadores\n";
           cadena_iteracion += "Rojo: ";
           cadena_iteracion += String(countRed);
@@ -89,14 +123,21 @@ void loop() {
           cadena_iteracion += String(countGreen);
           cadena_iteracion += "\n";       
           cadena_iteracion += "Color: ";
-          if (countRed < countBlue && countRed < countGreen && countRed < 80) 
-            cadena_iteracion += "ROJO\n";
-          else if (countGreen < countRed && (countGreen - countBlue) < 4) 
+          if (countGreen <= countRed && countGreen <= countBlue) 
             cadena_iteracion += "VERDE\n";
           else if (countBlue < countRed && countBlue < countGreen) 
             cadena_iteracion += "AZUL\n";
+          else if (countRed < countBlue && countRed < countGreen) //&& countRed < 80
+            cadena_iteracion += "ROJO\n";
+          
+          /*if (countRed < countBlue && countRed < countGreen && countRed < 80) 
+            cadena_iteracion += "ROJO\n";
+          else if (countGreen < countRed && (countBlue - countGreen) < 4) 
+            cadena_iteracion += "VERDE\n";
+          else if (countBlue < countRed && countBlue < countGreen) 
+            cadena_iteracion += "AZUL\n";*/
           else cadena_iteracion += "-\n";      
-      }
+      
       Serial.println(cadena_iteracion);
       delay(1000);
       #endif
@@ -446,7 +487,7 @@ void loop() {
       //90º RIGHT
       motor.right();
       motor.backRight();
-      delay(1150);
+      delay(1170);
       motor.botStop();
       delay(5000);
       //90º LEFT
@@ -458,7 +499,7 @@ void loop() {
       //180º
       motor.right();
       motor.backRight();
-      delay(2300);
+      delay(2500);
       motor.botStop();
       delay(5000);
     #endif

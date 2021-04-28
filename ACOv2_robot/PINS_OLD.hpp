@@ -33,14 +33,14 @@
 #define BLUETOOTH_TRANSMIT 1
 #define BLUETOOTH_RECEIVE 2
 //COLOR SENSOR
-#define S1 7
-#define S0 8
+#define S1 8
+#define S0 9
 #define S3 10
 #define S2 11
 #define OUT 12
 //LN298
-#define LN298_IN1 6
-#define LN298_IN2 5
+#define LN298_IN1 5
+#define LN298_IN2 4
 #define LN298_IN3 3
-#define LN298_IN4 9
+#define LN298_IN4 2
 #endif

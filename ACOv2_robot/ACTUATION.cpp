@@ -1,7 +1,7 @@
 #include "ACTUATION.hpp"
 Actuation::Actuation(): 
-  cny_left_(CNY_LEFT, 900),
-  cny_right_(CNY_RIGHT, 900),
+  cny_left_(CNY_LEFT, 870),
+  cny_right_(CNY_RIGHT, 870),
   cnys_(cny_left_, cny_right_),
   previous_grade_(0)
   {}

@@ -87,7 +87,7 @@ void MOTOR::roll_grades(int grades){
     case 90:
       left();
       backLeft();
-      delay(1150);
+      delay(1170);
       //delay(360); //ATOMICA
       //delay(1400); //BATERIA GRANDE
       botStop();
@@ -95,7 +95,7 @@ void MOTOR::roll_grades(int grades){
     case 180:
       right();
       backRight();
-      delay(2300);
+      delay(2500);
       //delay(730); //ATOMICA
       //delay(2688);  //BATERIA GRANDE
       botStop();

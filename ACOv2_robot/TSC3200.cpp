@@ -15,20 +15,21 @@ TSC3200::TSC3200():
         digitalWrite (S1_, HIGH);
     }
 Color TSC3200::getColor() {
-    byte countRed, countBlue, countGreen;
-    for(int i = 0; i < 50; ++i){
+    byte countRed = 0, countBlue = 0, countGreen = 0;
+    for(int i = 0; i < 7; ++i){
           digitalWrite(S2_, LOW);
           digitalWrite(S3_, LOW);
-          countRed = pulseIn(OUT_, digitalRead(OUT_) == HIGH ? LOW : HIGH);
+          countRed += pulseIn(OUT_, digitalRead(OUT_) == HIGH ? LOW : HIGH);
           digitalWrite(S3_, HIGH);
-          countBlue = pulseIn(OUT_, digitalRead(OUT_) == HIGH ? LOW : HIGH);
+          countBlue += pulseIn(OUT_, digitalRead(OUT_) == HIGH ? LOW : HIGH);
           digitalWrite(S2_, HIGH);
-          countGreen = pulseIn(OUT_, digitalRead(OUT_) == HIGH ? LOW : HIGH);
-    } 
-    if (countRed < countBlue && countRed < countGreen && countRed < 80) 
-      color_ = Color::RED;
-    else if (countGreen < countRed && (countGreen - countBlue) < 4 ) 
+          countGreen += pulseIn(OUT_, digitalRead(OUT_) == HIGH ? LOW : HIGH);
+    }     
+    
+    if (countGreen <= countRed && countGreen <= countBlue) 
       color_ = Color::GREEN;
+    else if (countRed < countBlue && countRed < countGreen) 
+      color_ = Color::RED;
     else if (countBlue < countRed && countBlue < countGreen) 
       color_ = Color::BLUE;
     return color_;

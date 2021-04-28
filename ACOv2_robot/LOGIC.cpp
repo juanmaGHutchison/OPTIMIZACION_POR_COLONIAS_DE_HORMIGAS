@@ -14,7 +14,7 @@ uint8_t Logic::Proceed(Color color) {
   if(isGoal(color)) way_.WAY( way_.WAY_HOME );
   if(way_.WAY() == way_.WAY_HOME || isGoal(color)) {
     if(isGoal(color)) {
-      final_path_ = path_;
+      //final_path_ = path_;
       map_.grades_toogle_conversion();
       toogle_ = true; 
       //Serial.println("IS GOAL");
@@ -102,7 +102,8 @@ uint8_t Logic::Proceed(Color color) {
       else
         Serial.println("WAY food");*/        
       next_node = map_.next_node(map_.actual());    
-      path_.add_path(next_node);     
+      path_.add_path(next_node); 
+      final_path_.add_path(next_node);    
       /*Serial.println("INDEX OF MAP_GRADES:");
       Serial.print("MAP_.PREVIOUS(): ");
       Serial.println(map_.previous());

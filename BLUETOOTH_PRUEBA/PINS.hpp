@@ -1,19 +1,16 @@
 #ifndef PINS_HPP_
 #define PINS_HPP_
-
 //DEFINITION OF PINS 
 /*************CNYx2*********************
  *  ARDUINO PIN   NAME                 *
  *    A1          CNY_LEFT             *
  *    A2          CNY_RIGHT            *
  ***************************************/
-
  /*************BLUETOOTH****************
  *  ARDUINO PIN   NAME                 *
  *    D1/TX       BLUETOOTH_TRANSMIT   *
  *    D2/RX       BLUETOOTH_RECEIVE    *
  ***************************************/
-
  /*************COLOR_SENSOR*************
  *  ARDUINO PIN   NAME                 *
  *    D8          S1                   *
@@ -22,7 +19,6 @@
  *    D11         S2                   *
  *    D12         OUT                  *
  ***************************************/
-
  /*************LN298********************
  *  ARDUINO PIN   NAME                 *
  *    D5          IN1                  *
@@ -30,27 +26,21 @@
  *    D3          IN3                  *
  *    D2          IN4                  *
  ***************************************/
-
 //CNYx2
-#define CNY_LEFT A1
-#define CNY_RIGHT A2
-
+#define CNY_LEFT A2
+#define CNY_RIGHT A1
 //BLUETOOTH
 #define BLUETOOTH_TRANSMIT 1
 #define BLUETOOTH_RECEIVE 2
-#define BLUETOOTH_ON 6
-
 //COLOR SENSOR
-#define S1 8
-#define S0 9
+#define S1 7
+#define S0 8
 #define S3 10
 #define S2 11
 #define OUT 12
-
 //LN298
-#define LN298_IN1 5
-#define LN298_IN2 4
+#define LN298_IN1 6
+#define LN298_IN2 5
 #define LN298_IN3 3
-#define LN298_IN4 2
-
+#define LN298_IN4 9
 #endif
