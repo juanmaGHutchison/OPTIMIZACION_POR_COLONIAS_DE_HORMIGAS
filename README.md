@@ -2,6 +2,12 @@
 
 _El proyecto permite realizar una ejecución real del Algoritmo de Colonias de Hormigas en un robot diseñado y fabricado en Arduino, diseño del robot disponible en el mismo proyecto._
 
+Podemos encontrar una breve explicación además de una ejecución del robot finalizado en el siguiente enlace:
+* [Ejecución ACO en Arduino](https://www.youtube.com/watch?v=iJVlAWncoFY&t=352s) - Video explicativo con posterior ejecución del Algoritmo de Colonias de Hormigas.
+
+Y tenemos otro video en el cual se detalla el montaje de dicho robot en Arduino:
+* [Montaje robot ACO](https://www.youtube.com/watch?v=88lnHN8jg98) - Video explicativo del montaje del robot en Arduino.
+
 ## Descripcion de directorios y archivos
 
 _Descripción de los directorios y archivos disponibles en el proyecto:_
