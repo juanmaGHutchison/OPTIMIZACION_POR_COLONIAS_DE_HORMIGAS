@@ -13,6 +13,8 @@ _Descripción de los directorios y archivos disponibles en el proyecto:_
 * 'CNYboardV2.0': Directorio donde se almacena el proyecto de diseño de la PCB al que irán conectados los sensores CNY70. Podemos encontrar la información en la documentación del archivo 'Gomez-Hutchison-JuanManuel_TFG', Sección 3.3.4.1.
 * 'TEST_PIEZAS_HORMIGAS': Directorio que contiene código en Arduino para el testeo de piezas individuales del Robot, sensores, actuadores... así como de algunas pruebas de integración de éstos. 
 * 'shieldV2.0.1': Directorio donde se almacena el proyecto de diseño de la PCB al que irán interconectados todos los componentes electrónicos. Podemos encontrar la información en la documentación del archivo 'Gomez-Hutchison-JuanManuel_TFG', Sección 3.3.4.2.
+* 'Diseño_soporte3D': Directorio que contiene el diseño del soporte de la batería de nuestro robot.
+* 'Mapa': Directorior que contiene el diseño del mapa así como las imágenes listas para imprimir.
 * 'Gomez-Hutchison-JuanManuel_TFG': Archivo que contiene la documentación completa del proyecto, para cualquier tipo de duda referente al proyecto, acceder a este archivo.
 
 
@@ -45,6 +47,8 @@ _Herramientas utilizadas para el proyecto_
 * [Clang](https://clang.llvm.org/) - Usado para compilar el Programa en C++
 * [GnuPlot](http://www.gnuplot.info/) - Usado para generar Gráficas
 * [Eagle](https://www.autodesk.com/products/eagle/overview?plc=F360&term=1-YEAR&support=ADVANCED&quantity=1) - Usado para realizar el diseño de las PCB
+* [Fusion 360](https://www.autodesk.es/products/fusion-360/overview?term=1-YEAR) - Usado para realizar el diseño 3D
+* [InkScape](https://inkscape.org/es/) - Usado para el diseño del mapa
 * [Latex](https://es.overleaf.com) - Usado para escribir la documentación.
 
 ## Autores 
@@ -54,7 +58,6 @@ _Ayudas ofrecidas_
 * **Arturo Morgado Estévez** - *Estructuración del proyecto y electrónica*
 * **Abel García Otero** - *Electrónica*
 * **Ignacio Díaz Cano** - *Documentación y codificación* - [ignaciodc](https://github.com/ignaciodc)
-* **Villanuevad** - *Plantilla de documento README.md* - [villanuevand](https://github.com/villanuevand)
 
 
 ---
